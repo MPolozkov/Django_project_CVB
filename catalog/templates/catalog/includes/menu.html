@@ -1,0 +1,27 @@
+{% with url_name=request.resolver_match.url_name app=request.resolver_match.app_name %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand fw-bold" href="{% url 'catalog:home' %}">Skystore</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainMenu"
+                aria-controls="mainMenu" aria-expanded="false" aria-label="Меню">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="mainMenu">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link {% if app == 'catalog' and url_name == 'home' %}active{% endif %}" href="{% url 'catalog:home' %}">Главная</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if app == 'blog' %}active{% endif %}" href="{% url 'blog:post_list' %}">Блог</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if url_name == 'contacts' %}active{% endif %}" href="{% url 'catalog:contacts' %}">Контакты</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'admin:index' %}">Админка</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+{% endwith %}
