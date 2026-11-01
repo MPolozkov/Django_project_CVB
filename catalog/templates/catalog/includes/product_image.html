@@ -1,0 +1,5 @@
+{% if product.image %}
+    <img src="{{ product.image.url }}" class="{{ img_class|default:'card-img-top product-img' }}" alt="{{ product.name }}">
+{% else %}
+    <div class="{{ img_class|default:'card-img-top' }} product-img-placeholder">Нет изображения</div>
+{% endif %}
